@@ -1,0 +1,29 @@
+.premier {
+    border:solid black 1px;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+ 
+}
+
+.premier div ul li {
+    list-style: none;
+}
+.deuxieme {
+    border: solid black 1px;
+}
+.act {
+    background-color: rgba(21, 22, 22, 0.842);
+}
+.act p {
+    color: white;
+    padding-left: 10px;
+
+}
+.urgent {
+   color: red;
+
+}
+nav form input {
+    width: 470%;
+}

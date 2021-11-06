@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="alerte.component.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<title>Document</title>
+    <style>
+	tbody tr td #moi {
+			color: blue;
+		}
+      
+    </style>
+</head>
+<body>
+   
+    <div class="flex-box">
+        <div class="card">
+            <div class="card-head">
+              <h4 class="card-title">Hassmar</h4>
+            </div>
+              <div class="card-body">
+              <p class="card-text">20</p>
+            </div>
+          </div>
+          
+          <div class="card">
+            <div class="card-head">
+              <h4 class="card-title">POLICE NATIONALE</h4>
+            </div>
+              <div class="card-body">
+              <p class="card-text">20</p>
+            </div>
+          </div>
+          
+          <div class="card">
+            <div class="card-head">
+              <h4 class="card-title">DIRECTION DES DOUANES</h4>
+            </div>
+              <div class="card-body">
+              <p class="card-text">20</p>
+            </div>
+          </div>
+          
+          <div class="card">
+            <div class="card-head">
+              <h4 class="card-title">MINISTRE DE L'INTERIEUR</h4>
+            </div>
+              <div class="card-body">
+              <p class="card-text">20</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-head">
+              <h4 class="card-title">PORT AUTONOME</h4>
+            </div>
+              <div class="card-body">
+              <p class="card-text">20</p>
+            </div>
+          </div>
+          <ul class="list-group">
+            <li class="btn btn-danger">Pas encore envoyées :</li>
+            <li class="btn btn-warning">En cours : </li>
+            <li class="btn btn-success">Recues :</li>
+          </ul>
+		  <div class="trois">
+            <div style="color: red;">15</div>
+			<div style="color: yellow;">15</div>
+			<div style="color:green;">15</div>
+		  </div>
+    </div>
+	
+	<div class="alerte">
+        <h6>TOUTES LES ALERTES</h6>
+		<div class="bbtn">
+		<button class=" btn btn-primary m-2">Exporter</button>
+	    
+<button (click)="clickAddAlerte()" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  + Nouvelle alerte
+</button>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+     
+<div class="container">
+	<div class="haut">
+	    <h5>NOUVELLE ALERTE</h5>
+   </div>
+	<form [formGroup]="formValue">
+	  <label  class="mb-2 mr-sm-2">intitule</label>
+	  <input type="text" formControlName="intitule" class="form-control mb-2 mr-sm-2"  placeholder="intitule" >
+
+	   <label   class="mb-2 mr-sm-2">Niveau d'alerte</label>
+	 <select name="cars" formControlName="niveau" class="custom-select mb-3">
+		<option value="Urgent">Urgent</option>
+		<option value="Critique">Critique</option>
+		<option value="Mineur">Mineur</option>
+		<option value="Majeure">Majeure</option>
+	  </select>
+
+
+
+	<label for="Date" class="mb-2 mr-sm-2">Date</label>
+	<input type="text"   formControlName="date" class="form-control mb-2 mr-sm-2" id="date" placeholder="la Date " name="date">
+
+	 <label for="range"  class="mb-2 mr-sm-2">Progression</label>
+	 <input   formControlName="progression" type="range" min="1" max="100" value="50"><br>
+
+	   
+	   <label   class="mb-2 mr-sm-2">Creer par</label>
+	 <select name="cars"   formControlName="creer" class="custom-select mb-3">
+		<option value="Police Nationale">Police Nationale</option>
+		<option value="Direction des Douanes">Direction des Douanes</option>
+		<option value="Ministere de l'interieur">Ministére de l'interieur</option>
+		<option value="Marine Nationale">Marine Nationale</option>
+	  </select>
+
+	  <label   class="mb-2 mr-sm-2">Destinataire(s)</label>
+  
+	  <select name="cars" formControlName="destinataire"  class="custom-select mb-3">
+		 <option value="Police Nationale">Police Nationale</option>
+		 <option value="Direction des Douanes">Direction des Douanes</option>
+		 <option value="Ministere de l'interieur">Ministére de l'interieur</option>
+		 <option value="Marine Nationale">Marine Nationale</option>
+	   </select>
+	   <button  id="cancel"  class="btn btn-warning " data-bs-dismiss="modal">Annuler</button>
+	   <button *ngIf="showAdd" (click)= "postAlerteDetails()" class="btn btn-primary ">Valider</button>
+	   <button  *ngIf="showUpdate" (click)= "updateAlerteDetails()" class="btn btn-primary ">Modifier</button>
+	  
+	</form>
+  </div>
+  
+  </div>
+</div>
+	</div>
+   </div>
+	</div>
+<table  class="table mt-3">
+	<thead class="thead-light">
+		<tr>
+			<th>Intitulé</th>
+			<th>Niveau d'alerte</th>
+			<th>Date</th>
+			<th>Crée par</th>
+			<th>Destinataire(s)</th>
+			<th>Progression</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let row of alerteData">
+
+			<td>{{row.intitule}}</td>
+			<td><button id="moi" class="btn btn-warning">{{row.niveau}}</button></td>
+			<td>{{row.date}}</td>
+			<td>{{row.creer}}</td>
+			<td>{{row.destinataire}}</td>
+			<td >{{row.progression}}%</td>
+
+			<td>
+				<button (click)="onEdit(row)" class="btn btn-info" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal">modif</button>
+				<button (click)="deleteAlerte(row)" class="btn btn-danger mx-3">sup</button>
+			</td> 
+		</tr>
+	
+	</tbody>
+</table>
